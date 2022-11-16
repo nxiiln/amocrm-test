@@ -6,7 +6,7 @@ const timerEl = document.querySelector('span');
 // который будет анимировать timerEl
 const createTimerAnimator = () => {
   return (seconds) => {
-    let currTime = 0;
+    let currTime = seconds;
 
     const calculateTimeFormat = () => {
       const ss = currTime < 60 ? currTime : currTime % 60;
@@ -19,8 +19,8 @@ const createTimerAnimator = () => {
     }
 
     const timer = () => {
-      if (currTime < seconds) {
-        currTime += 1;
+      if (currTime > 0) {
+        currTime -= 1;
         timerEl.innerHTML = calculateTimeFormat();
       }
     }
@@ -28,7 +28,6 @@ const createTimerAnimator = () => {
     timerEl.innerHTML = calculateTimeFormat();
     const interval = setInterval(timer, 1000);
     inputEl.addEventListener('input', () => clearInterval(interval));
-    if (currTime > seconds) clearInterval(interval);
   };
 };
 
