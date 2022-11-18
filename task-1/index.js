@@ -21,11 +21,11 @@ const createTimerAnimator = () => {
     const timer = () => {
       if (currTime > 0) {
         currTime -= 1;
-        timerEl.innerHTML = calculateTimeFormat();
+        timerEl.textContent = calculateTimeFormat();
       }
     }
 
-    timerEl.innerHTML = calculateTimeFormat();
+    timerEl.textContent = calculateTimeFormat();
     const interval = setInterval(timer, 1000);
     inputEl.addEventListener('input', () => clearInterval(interval));
   };
